@@ -1,54 +1,64 @@
 <template>
     <v-container>
         <v-row>
-            <v-col cols="6" offset="3">
-                <h1 class="text--secondary mb-3 mt-3">Orders</h1>
-                <v-list subheader two-line flat>
-                    <v-list-item v-for="order in orders"
-                    :key="order.id">
-                        <template>
-                            <v-list-item-action>
-                                <v-checkbox
-                                :input-value="order.done" 
-                                color="primary"
-                                @click="markDone(order)" 
-                                ></v-checkbox>
-                            </v-list-item-action>
-                        </template>
-                        <v-list-item-title>{{ order.name }}</v-list-item-title>
-                        <v-list-item-subtitle>{{ order.phone }}</v-list-item-subtitle>
-                        <template v-slot:append>
-                                <v-list-item-action>
-    <v-btn class="primary" :to="'/ad/' + order.adId">Open</v-btn>
-        </v-list-item-action>
-                        </template>
-                    </v-list-item>
-                </v-list>
+            <v-col cols="8" offset="2">
+                <h1 class="text--secondary mb-3 mt-3">Create Ad</h1>
+                <v-form v-model="valid" ref="form" validation>
+                    <v-text-field name="title" label="Ad Title" type="text" v-model="title"
+                        :rules="[(v) => !!v || 'Title is required']">
+                    </v-text-field>
+                    <v-textarea name="description" label="Ad Description" type="text" v-model="description"
+                        :rules="[(v) => !!v || 'Description is required']" class="mb-3"></v-textarea>
+                </v-form>
+                <v-row>
+                    <v-col cols="8">
+                        <v-btn class="mt-3" color="warning">
+                            Upload
+                            <v-icon right dark>mdi-cloud- upload</v-icon>
+                        </v-btn>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="8">
+                        <img src="https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg" height="150" class="mt-3" />
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="8">
+                        <v-switch v-model="promo" label="Ad to Promo?"></v-switch>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="8">
+                        <v-spacer></v-spacer>
+                        <v-btn color="success" @click="createAd">Create Ad</v-btn>
+                    </v-col>
+                </v-row>
             </v-col>
         </v-row>
     </v-container>
 </template>
-
 <script>
 export default {
     data() {
         return {
-            orders: [
-                {
-                    id: "123",
-                    name: "Kostya",
-                    phone: "+7(978)000-00-05",
-                    adId: "1",
-                    done: true
-                }
-            ]
-        }
+            valid: false,
+            title: "",
+            description: "",
+            promo: false,
+        };
     },
     methods: {
-        markDone(order) {
-            order.done = !order.done
-            console.log(order.done)
-        }
-    }
-}
+        createAd() {
+            if (this.$refs.form.validate()) {
+                const ad = {
+                    title: this.title,
+                    desc: this.description,
+                    promo: this.promo,
+                };
+                console.log(ad);
+            }
+        },
+    },
+};
 </script>
