@@ -55,7 +55,7 @@ export default {
             payload.id = Math.random()
             payload.userId = getters.user != null ? getters.user.id : '1'
         }
-  
+
     },
     getters: {
         ads(state) {
@@ -100,7 +100,7 @@ export default {
                 throw 'Упс... Ошибка создания объявления'
             })
         }
-  
+
     },
     async updateAd({ commit }, { title, desc, id }) {
         commit('clearError')
@@ -123,5 +123,5 @@ export default {
             })
         }
     }
-  
-  }
+
+}

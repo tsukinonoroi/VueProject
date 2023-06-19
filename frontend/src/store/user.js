@@ -4,10 +4,10 @@ class User {
         this.email = email
         this.password = password
     }
-  }
-  
-  
-  export default {
+}
+
+
+export default {
     state: {
         user: null
     },
@@ -31,8 +31,8 @@ class User {
             let promise = new Promise(function (resolve) {
                 setTimeout(() => resolve('Done'), 3000);
             });
-  
-  
+
+
             if (isRequestOk) {
                 await promise.then(() => {
                     commit('setUser', new User(1, email, password))
@@ -59,8 +59,8 @@ class User {
             let promise = new Promise(function (resolve) {
                 setTimeout(() => resolve('Done'), 3000);
             });
-  
-  
+
+
             if (isRequestOk) {
                 await promise.then(() => {
                     commit('setUser', new User(1, email, password))
@@ -83,4 +83,4 @@ class User {
             return state.user !== null
         }        
     }
-  }
+}

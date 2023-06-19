@@ -3,17 +3,13 @@
     <v-row justify="center">
       <v-col cols="12" xs="12">
         <v-carousel>
-          <v-carousel-item
-          v-for="ad in promoAds"
-          :key="ad.id"
-          :src="ad.src"
-          cover>
-    <div class="ad-link">
-	<v-btn class="error" :to="'/ad/' + ad.id">
-		{{ ad.title }}
-	</v-btn>
-</div>
-</v-carousel-item>
+          <v-carousel-item v-for="ad in promoAds" :key="ad.id" :src="ad.src" cover>
+            <div class="ad-link">
+              <v-btn class="error" :to="'/ad/' + ad.id">
+                {{ ad.title }}
+              </v-btn>
+            </div>
+          </v-carousel-item>
         </v-carousel>
       </v-col>
     </v-row>
@@ -31,10 +27,9 @@
           </v-card-title>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn text>Open</v-btn>
-            <v-btn raised color="primary">
-              Buy
-            </v-btn>
+            <v-btn :to="'/ad/' + ad.id">Open</v-btn>
+            <buy-ad-modal :ad="ad"></buy-ad-modal>
+            Buy
           </v-card-actions>
         </v-card>
       </v-col>
