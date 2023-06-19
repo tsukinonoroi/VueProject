@@ -2,15 +2,14 @@
   <v-container>
   <v-row justify="center">
   <h1>Home</h1>
-  </v-row>
-  </v-container>
-  </template>
-  <script>
-  export default {
-  data () {
-  return {
-  }
-  }
-  }
-  </script>
-  
+    </v-row>
+    </v-container>
+    </template>
+    <script>
+    export default {
+    data () {
+    return {
+    }
+    }
+    }
+    </script>

@@ -13,19 +13,17 @@
   </v-list-item>
   <v-divider></v-divider>
   <v-list dense>
-    <v-list-item
-    v-for="link in links"
-    :key="link.title"
-    :to="link.url"
-    >
-    <template v-slot:prepend>
-    <v-icon :icon="link.icon"></v-icon>
-    </template>
-    <v-list-item-title>{{ link.title }}</v-list-item-title>
-</v-list-item>
-
+      <v-list-item
+      v-for="link in links"
+      :key="link.title"
+      :to="link.url"
+      >
+      <template v-slot:prepend>
+      <v-icon :icon="link.icon"></v-icon>
+      </template>
+      <v-list-item-title>{{ link.title }}</v-list-item-title>
+      </v-list-item>
   </v-list>
-  
   </v-navigation-drawer>
   <v-app-bar app dark color="primary">
   <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -37,11 +35,10 @@
   :to="link.url"
   >
   <v-icon
-    start
-    :icon="link.icon"
+  start
+  :icon="link.icon"
   ></v-icon>
   {{ link.title }}
-
   </v-btn>
   </v-toolbar-items>
   </v-app-bar>
@@ -53,9 +50,9 @@
   
   
   
-  <script>
-  export default {
-  data() {
+<script>
+export default {
+data() {
   return {
   drawer: false,
   links: [
@@ -67,7 +64,5 @@
   ]
   }
   }
-  }
-  </script>
-  
-  
+}
+</script>
