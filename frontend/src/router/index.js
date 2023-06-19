@@ -6,44 +6,52 @@ import NewAdView from '../views/Ads/NewAdView.vue'
 import LoginView from '../views/Auth/LoginView.vue'
 import RegistrationView from '../views/Auth/RegistrationView.vue'
 import OrdersView from '../views/User/OrdersView.vue'
+import AuthGuard from './auth_guard'
 
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: AuthGuard
   },
   {
     path:"/ad/:id",
     props: true,
     name:"ad",
-    component: AdView
+    component: AdView,
+    beforeEnter: AuthGuard,
   },
   {
     path:"/list",
     name:"list",
-    component: AdListView
+    component: AdListView,
+    beforeEnter: AuthGuard
   },
   {
     path:"/new",
     name:"newAd",
-    component: NewAdView
+    component: NewAdView,
+    beforeEnter: AuthGuard
   },
   {
     path:"/login",
     name:"login",
-    component: LoginView
+    component: LoginView,
+    beforeEnter: AuthGuard
   },
   {
     path:"/registration",
     name: "reg",
-    component: RegistrationView
+    component: RegistrationView,
+    beforeEnter: AuthGuard
   },
   {
     path: "/orders",
     name: "orders",
-    component: OrdersView
+    component: OrdersView,
+    beforeEnter: AuthGuard
   } 
 ]
 
